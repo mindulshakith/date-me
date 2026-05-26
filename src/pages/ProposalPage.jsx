@@ -92,9 +92,7 @@ export default function ProposalPage() {
   const [yesClicked, setYesClicked] = useState(false);
   const [rejected, setRejected] = useState(false);
   const [bgMemes, setBgMemes] = useState([]);
- 
-  const yesScale = 1 + noCount * 0.12;
- 
+  
   const memePositions = useMemo(() =>
     Array.from({ length: MAX_NO }, (_, i) => ({
       id: i,
