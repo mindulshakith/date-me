@@ -8,34 +8,35 @@ import PetalRain from '../components/PetalRain';
 import { EMAILJS_CONFIG } from '../emailConfig';
 
 const NO_MESSAGES = [
-  "Roveena… the dog is literally crying 🐶😢",
+  "Roveena… I'm not taking no for an answer 🐶😢",
   "Error 404: No not found. Try again!",
   "My heart can't take this… (just kidding, pick Yes 🥺)",
-  "Are you sure? Even the dog thinks you should say yes.",
+  "Are you sure? ",
   "I practiced this for weeks. WEEKS. 😭",
   "Okay I'm starting to panic a little…",
-  "The dog and I had a whole meeting about this. Vote was unanimous.",
+  "Plsss.....😭",
   "Bold of you to keep clicking this. Very bold.",
   "I made a whole website for you, Roveena… 🥺",
-  "Last chance before the dog takes over negotiations.",
+  "This is your last chance to say Yes, Don't waste it... 🐾😴",
 ];
 
+// Sad dog & cat GIFs shown as floating background memes
 const SAD_MEMES = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWlyeXF3cDU3bzRhY21sdG9tYnB4ZWh2cmN2bnB0bWdya3dzamFjbiZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/H5C8CevNMbpBqNqFjl/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3c3B0aGwyanBqNXBienVvY3h3cDMxcnZwaXVlY2Y1dDMxZmh2emc3dyZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/wr7oA0rSjnWuiLJOY5/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGxkeHliYmM3MmxmcHYxYnMzejZvY3lyb29kdXo5dm5oZjQydjVyNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lGBecpB2dIMwt6ohfI/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGxkeHliYmM3MmxmcHYxYnMzejZvY3lyb29kdXo5dm5oZjQydjVyNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/98MaHVwJOmWMz4cz1K/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGxkeHliYmM3MmxmcHYxYnMzejZvY3lyb29kdXo5dm5oZjQydjVyNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l22ysLe54hZP0wubek/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGxkeHliYmM3MmxmcHYxYnMzejZvY3lyb29kdXo5dm5oZjQydjVyNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/dJYoOVAWf2QkU/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dThuanJlbDB5NmFpdDZrcmpwNnR4eWdlZnQ2bDZqbWtjb3JzdHJhdiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/d7rvF20PqNuGKSQGhf/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dThuanJlbDB5NmFpdDZrcmpwNnR4eWdlZnQ2bDZqbWtjb3JzdHJhdiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/EW79wVgSajjv44E8Hs/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cHJzZnczcDRvajZpaHN2anZleXRhZWMxcXZ3bWk3NHkyM3J6azRociZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3QWfMsI8IaarXxtBt6/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3M2w3cGlldW1xY2xveDRtMWZldTh3aDIwY2JodmxpZDMxaWo5NHQzMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Ib6HUhF07BzRcma1MD/giphy.gif"
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTlndzZpZjM1bXZnZTZxMmZhY3JlOGRraWZreW12YjhzZXB5YjZxaCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wyi5tYZJvkMLIgRmXv/giphy.gif",   // sad dog
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHh6dXJqdnB3MTNlZ25hM3hjbnczc28zcGFzd2ppaXU1eGxmZm1zMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lGBecpB2dIMwt6ohfI/giphy.gif",         // sad cat
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHh6dXJqdnB3MTNlZ25hM3hjbnczc28zcGFzd2ppaXU1eGxmZm1zMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/98MaHVwJOmWMz4cz1K/giphy.gif",         // crying dog
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHh6dXJqdnB3MTNlZ25hM3hjbnczc28zcGFzd2ppaXU1eGxmZm1zMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VNTMx3LkpG2anXpwbr/giphy.gif",         // sad cat blanket
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHh6dXJqdnB3MTNlZ25hM3hjbnczc28zcGFzd2ppaXU1eGxmZm1zMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l22ysLe54hZP0wubek/giphy.gif",   // sad dog eyes
+  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZWUyM2txaGJseGVmbXJ5dXB6b2JlZHZqbnFjdWxkNnJhOG9jNW1jdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3QWfMsI8IaarXxtBt6/giphy.gif",         // cat crying
+  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MnM4MXYwaXZjZHptd2s3dDh1cnVyNzZvdGlvOGdudTcwc2kxaGdhNCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Q6WPVzFU8LcBWWgQE1/giphy.gif",         // cat crying
+  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aGp6czlrbmVsb3RuemdmaDY3djYyN3pibW42YmF1aDZhcXh5ZjNxMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Ib6HUhF07BzRcma1MD/giphy.gif",         // cat crying
+  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cjg3M2s4OWp3NGpjdzdua3U5N3d3aXdmeWNydmY3eXo3bndkNGZtMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/UrhRmF81nrHG3cBIqO/giphy.gif",         // cat crying
+  "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aHRvbDB2Ympvd2x3ejJzcGFyZ3Y3ZXQ4NWc5YTV1a2I4ZGcyaXk3ZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7WTqo27pLRYxRtg4/giphy.gif"
 ];
 
 const DOG_MEME = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif";
-const HAPPY_DOG = "https://media.giphy.com/media/3ndAvMC5LFPNMCzq7m/giphy.gif";
-const SAD_DOG_FINAL = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aHQ0bHFyZmtueWYyZTFxbWZhbm1ocjdmdmU1dWkwMDR5enZuaXJpYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/U3bq9IjJtOtXWhhsU8/giphy.gif";
+const HAPPY_DOG = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MnR5d3EzZDU1bGRwY216Nmt4cXQzbHRtdWVmaTl0MnNwcGpncmM0cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/i17zHLTMt1SmJMv6Aw/giphy.gif";
+const SAD_DOG_FINAL = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2EycmV0OGUwYmEza2RrcWM3b2lvcXFkczFyNzltZG11eXpqNTZyOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ghtJghlRKn2P2ITY7M/giphy.gif";
 
 const MAX_NO = 10;
 
