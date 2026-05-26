@@ -224,7 +224,7 @@ export default function DatePlannerPage() {
             </div>
 
             <p className="font-body text-sm leading-relaxed" style={{ color: '#c0627a' }}>
-              Your preferences have been sent to Mindula. He'll take care of everything else. You just have to show up and smile. 💕
+              Your wish is my command. 💕
             </p>
 
             <p className="font-body text-xs mt-6 italic" style={{ color: '#d4a0b0' }}>
