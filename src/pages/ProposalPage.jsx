@@ -84,7 +84,7 @@ function StickerMemes({ memes }) {
 export default function ProposalPage() {
   const navigate = useNavigate();
   const { width, height } = useWindowSize();
-
+ 
   const [noCount, setNoCount] = useState(0);
   const [currentMsg, setCurrentMsg] = useState('');
   const [showMsg, setShowMsg] = useState(false);
@@ -92,9 +92,9 @@ export default function ProposalPage() {
   const [yesClicked, setYesClicked] = useState(false);
   const [rejected, setRejected] = useState(false);
   const [bgMemes, setBgMemes] = useState([]);
-
+ 
   const yesScale = 1 + noCount * 0.12;
-
+ 
   const memePositions = useMemo(() =>
     Array.from({ length: MAX_NO }, (_, i) => ({
       id: i,
@@ -102,7 +102,7 @@ export default function ProposalPage() {
       rotate: (Math.random() - 0.5) * 30,
     }))
   , []);
-
+ 
   const sendRejectionEmail = useCallback(async () => {
     try {
       await emailjs.send(
@@ -119,29 +119,29 @@ export default function ProposalPage() {
       console.warn('Email failed:', e);
     }
   }, []);
-
+ 
   const handleNo = useCallback(() => {
     const next = noCount + 1;
     setNoCount(next);
     setCurrentMsg(NO_MESSAGES[Math.min(noCount, NO_MESSAGES.length - 1)]);
     setShowMsg(true);
-
+ 
     if (next <= memePositions.length) {
       setBgMemes(memePositions.slice(0, next));
     }
-
+ 
     if (next >= MAX_NO) {
       sendRejectionEmail();
       setTimeout(() => setRejected(true), 800);
     }
   }, [noCount, memePositions, sendRejectionEmail]);
-
+ 
   const handleYes = () => {
     setShowConfetti(true);
     setYesClicked(true);
     setTimeout(() => navigate('/date-planner'), 2800);
   };
-
+ 
   if (rejected) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden"
@@ -167,7 +167,7 @@ export default function ProposalPage() {
       </div>
     );
   }
-
+ 
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden"
@@ -175,13 +175,13 @@ export default function ProposalPage() {
     >
       {showConfetti && <Confetti width={width} height={height} colors={['#e8558a', '#f7a0bf', '#c0b0e8', '#fbc8db', '#a08ed8']} />}
       <PetalRain count={20} />
-
+ 
       {/* Ambient blobs */}
       <div className="fixed top-[-80px] left-[-80px] w-72 h-72 rounded-full opacity-20 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #f7a0bf, transparent)' }} />
       <div className="fixed bottom-[-80px] right-[-80px] w-96 h-96 rounded-full opacity-20 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #c0b0e8, transparent)' }} />
-
+ 
       {/* Card — position:relative so stickers are anchored to it */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -192,7 +192,7 @@ export default function ProposalPage() {
       >
         {/* Sticker memes anchored to the card */}
         <StickerMemes memes={bgMemes} />
-
+ 
         {/* Header */}
         <motion.p
           initial={{ opacity: 0 }}
@@ -211,7 +211,7 @@ export default function ProposalPage() {
         >
           Roveena 🌸
         </motion.h1>
-
+ 
         {/* Dog GIF */}
         <motion.div
           className="float mx-auto mb-5 relative"
@@ -226,7 +226,7 @@ export default function ProposalPage() {
             style={{ borderColor: '#fbc8db' }}
           />
         </motion.div>
-
+ 
         {/* Question */}
         <AnimatePresence mode="wait">
           {!yesClicked ? (
@@ -246,37 +246,36 @@ export default function ProposalPage() {
             </motion.div>
           )}
         </AnimatePresence>
-
+ 
         {/* Buttons */}
         {!yesClicked && (
-          <div className="flex justify-center items-center gap-4 mt-2" style={{ minHeight: '80px' }}>
+          <div className="flex flex-col items-center gap-3 mt-2" style={{ minHeight: '80px' }}>
             <motion.button
-              animate={{ scale: yesScale }}
-              transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-              whileHover={{ scale: yesScale * 1.07 }}
-              whileTap={{ scale: yesScale * 0.95 }}
+              whileHover={{ scale: 1.07 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleYes}
               className="yes-glow rounded-full font-body font-bold text-white shadow-lg"
               style={{
                 background: 'linear-gradient(135deg, #e8558a, #f278a3)',
                 padding: `${10 + noCount * 1.5}px ${24 + noCount * 3}px`,
                 fontSize: `${16 + noCount * 1.2}px`,
+                transition: 'padding 0.4s cubic-bezier(0.34,1.56,0.64,1), font-size 0.4s ease',
               }}
             >
               Yes! 💖
             </motion.button>
-
+ 
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={handleNo}
-              className="px-6 py-3 rounded-full font-body font-bold text-rose-300 border-2 border-rose-200 bg-white/60 text-sm"
-              style={{ cursor: 'pointer', flexShrink: 0 }}
+              className="px-6 py-2 rounded-full font-body font-bold text-rose-300 border-2 border-rose-200 bg-white/60 text-sm"
+              style={{ cursor: 'pointer' }}
             >
               No 🙈
             </motion.button>
           </div>
         )}
-
+ 
         {/* No click message */}
         <AnimatePresence>
           {showMsg && (
@@ -292,7 +291,7 @@ export default function ProposalPage() {
             </motion.div>
           )}
         </AnimatePresence>
-
+ 
         {noCount > 0 && noCount < MAX_NO && (
           <motion.p
             initial={{ opacity: 0 }}
@@ -302,7 +301,7 @@ export default function ProposalPage() {
             ({MAX_NO - noCount} "No"s left before the dog gives up 🐾)
           </motion.p>
         )}
-
+ 
         <p className="font-body text-xs text-rose-200 mt-6 italic">
           made with 🐾 and way too much courage — Mindula
         </p>
