@@ -160,7 +160,7 @@ export default function ProposalPage() {
             Wishing you all the very best. 💛
           </p>
           <p className="font-body text-xs text-rose-200 mt-6 italic">
-            — Mindula (& the dog)
+            — Mindula 
           </p>
         </motion.div>
       </div>
@@ -297,7 +297,7 @@ export default function ProposalPage() {
             animate={{ opacity: 1 }}
             className="text-xs text-rose-200 mt-3 font-body"
           >
-            ({MAX_NO - noCount} "No"s left before the dog gives up 🐾)
+            ({MAX_NO - noCount} "No"s left 🐾)
           </motion.p>
         )}
  
