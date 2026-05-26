@@ -24,7 +24,7 @@ export default function RejectedPage() {
           Wishing you all the very best. 💛
         </p>
         <p className="font-body text-xs text-rose-200 mt-6 italic">
-          — Mindula (& the dog)
+          — Mindula 
         </p>
       </motion.div>
     </div>
